@@ -42,7 +42,8 @@ ORYX.Plugins.BPMN2_0Serialization = {
 	bpmn2XpdlSerializationHandlerUrl : ORYX.CONFIG.ROOT_PATH + "bpmn2xpdlserialization",
 	
 	construct: function(facade) {
-	
+		this.bpmnSerializationHandlerUrl= ORYX.CONFIG.ROOT_PATH + "bpmn2_0serialization";
+		this.bpmnDeserializationHandlerUrl = ORYX.CONFIG.ROOT_PATH + "bpmn2_0deserialization";
 		this.facade = facade;
 	
 		/* BPMN 2.0 XML */

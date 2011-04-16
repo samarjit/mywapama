@@ -30,5 +30,19 @@
     <plugin name="ORYX.Plugins.DragTracker.PoolDragTracker" />
     <stencilsetextension
       namespace="http://oryx-editor.org/stencilsets/extensions/bpmncosts-2.0#" />
+      
+      <!-- samarjit -->
+		<!--<plugin name="ORYX.Plugins.File"/>
+		<plugin source="view.js" name="ORYX.Plugins.View">
+			<property zoomLevel="4"/>
+		</plugin>
+		<plugin name="ORYX.Plugins.Save"/>-->
+		<plugin name="ORYX.Plugins.BPMN2_0"/>
+		<plugin name="ORYX.Plugins.BPMN2_0Serialization"/>
+		<plugin name="ORYX.Plugins.BPMNImport"/>
+		<plugin name="ORYX.Plugins.BPMN2XHTML"/>
+		<plugin name="ORYX.Plugins.BPMN2XPDL20" />
+		<!--plugin name="ORYX.Plugins.FileRepositorySave" /-->
+		<!-- samarjit! -->
   </profile>
 </profiles>

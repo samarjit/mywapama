@@ -86,6 +86,7 @@ HOOKS = {
         }
 
         // communicate with CRM, update the sesson/@last-click time.
+        if(window.frameElement != null){
         var paramArray = window.frameElement.src.split("session-id=");
         var sessionId = paramArray.length > 1 ? paramArray[1] : "";
         if (sessionId == "") {
@@ -98,6 +99,7 @@ HOOKS = {
             method: 'post',
             parameters: {sessionid : sessionId}
         });
+        }
     },
     
     // UUIDRepositorySave Plugin

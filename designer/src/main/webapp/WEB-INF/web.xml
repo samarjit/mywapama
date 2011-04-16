@@ -76,6 +76,46 @@
     	<url-pattern>/stencilset/*</url-pattern>
     </servlet-mapping>
 	
+	<!--  samarjit  -->
+    <servlet>
+		<display-name>BPMN 2 Exporter</display-name>
+		<servlet-name>Bpmn2_0Servlet</servlet-name>
+		<servlet-class>
+			org.oryxeditor.server.Bpmn2_0Servlet
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<display-name>BPMN 2 XPDL Exporter</display-name>
+		<servlet-name>Bpmn2_0ToXpdlServlet</servlet-name>
+		<servlet-class>
+			org.oryxeditor.server.Bpmn2_0ToXpdlServlet
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<display-name>BPMN 2 Importer</display-name>
+		<servlet-name>Bpmn2_0Importer</servlet-name>
+		<servlet-class>
+			org.oryxeditor.server.BPMN2_0Importer
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Bpmn2_0Servlet</servlet-name>
+		<url-pattern>/bpmn2_0serialization</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Bpmn2_0ToXpdlServlet</servlet-name>
+		<url-pattern>/bpmn2xpdlserialization</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Bpmn2_0Importer</servlet-name>
+		<url-pattern>/bpmn2_0deserialization</url-pattern>
+	</servlet-mapping>
+	<!--  samarjit ! -->
+
 	<!-- the number within the session-timout element must be expressed in
 		minutes. it is now 24 hours. -->
 	<session-config>

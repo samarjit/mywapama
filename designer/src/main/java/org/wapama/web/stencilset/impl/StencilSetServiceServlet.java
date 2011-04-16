@@ -66,7 +66,7 @@ private static final Logger _logger = LoggerFactory.getLogger(StencilSetServiceS
         
         IDiagramStencilSet stencilset = _pluginService.findStencilSet(req, name);
         if (stencilset == null) {
-            throw new IllegalArgumentException("No stencilset by the name of " + name);
+            throw new IllegalArgumentException("No stencilset by the name of '" + name+"' and req uri:"+requestURI);
         }
         InputStream input = null;
         if (segments.length > 4) { //looking for a resource under the stencilset.

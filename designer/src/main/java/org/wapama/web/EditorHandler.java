@@ -262,6 +262,7 @@ public class EditorHandler extends HttpServlet {
      // get language from cookie
         String lang = null;
         Cookie[] cookies = request.getCookies();
+        if(cookies != null)
         for (Cookie cookie : cookies) {
             if ("locale".equals(cookie.getName())) {
                 lang = cookie.getValue().trim();
