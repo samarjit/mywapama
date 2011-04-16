@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd
+END
+Semantic.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd/Semantic.xsd
+END
+DC.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd/DC.xsd
+END
+BPMNDI.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd/BPMNDI.xsd
+END
+DI.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd/DI.xsd
+END
+BPMN20.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/validation/xsd/BPMN20.xsd
+END

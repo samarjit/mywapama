@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway
+END
+Gateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/Gateway.java
+END
+GatewayDirection.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/GatewayDirection.java
+END
+EventBasedGateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/EventBasedGateway.java
+END
+InclusiveGateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/InclusiveGateway.java
+END
+EventBasedGatewayType.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/EventBasedGatewayType.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/package-info.java
+END
+ExclusiveGateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/ExclusiveGateway.java
+END
+ComplexGateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/ComplexGateway.java
+END
+GatewayWithDefaultFlow.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/GatewayWithDefaultFlow.java
+END
+ParallelGateway.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/gateway/ParallelGateway.java
+END

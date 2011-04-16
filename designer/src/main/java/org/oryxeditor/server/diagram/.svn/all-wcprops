@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram
+END
+JSONBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/JSONBuilder.java
+END
+Shape.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Shape.java
+END
+Bounded.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Bounded.java
+END
+Stencil.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Stencil.java
+END
+StencilType.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/StencilType.java
+END
+Diagram.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Diagram.java
+END
+Point.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Point.java
+END
+Bounds.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/Bounds.java
+END
+DiagramBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/DiagramBuilder.java
+END
+StencilSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/diagram/StencilSet.java
+END

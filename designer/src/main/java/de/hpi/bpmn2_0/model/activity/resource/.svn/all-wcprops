@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource
+END
+ResourceAssignmentExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/ResourceAssignmentExpression.java
+END
+Performer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/Performer.java
+END
+ResourceParameterBinding.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/ResourceParameterBinding.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/package-info.java
+END
+ActivityResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/ActivityResource.java
+END
+Resource.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/Resource.java
+END
+ResourceParameter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/ResourceParameter.java
+END
+ResourceRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/ResourceRole.java
+END
+PotentialOwner.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/PotentialOwner.java
+END
+HumanPerformer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/HumanPerformer.java
+END
+Rendering.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/resource/Rendering.java
+END

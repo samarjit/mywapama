@@ -1,0 +1,86 @@
+10
+
+dir
+125
+https://timesht.googlecode.com/svn/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0
+https://timesht.googlecode.com/svn
+
+
+
+2011-04-15T11:48:28.901721Z
+125
+Samarjit.samanta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9e64ca09-63a4-4c88-9ffc-978a651b0b7f
+
+model
+dir
+
+exceptions
+dir
+
+ExportValidationEventCollector.java
+file
+
+
+
+
+2011-04-15T16:38:28.000000Z
+f703c5f23bc8f10346f33e5cdf22f175
+2011-04-15T11:48:28.901721Z
+125
+Samarjit.samanta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+323
+
+transformation
+dir
+
+factory
+dir
+
+migration
+dir
+
+validation
+dir
+
+annotations
+dir
+
+util
+dir
+

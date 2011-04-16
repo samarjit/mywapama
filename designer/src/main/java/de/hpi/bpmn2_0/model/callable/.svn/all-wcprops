@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable
+END
+GlobalManualTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalManualTask.java
+END
+GlobalUserTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalUserTask.java
+END
+GlobalTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalTask.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/package-info.java
+END
+GlobalBusinessRuleTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalBusinessRuleTask.java
+END
+GlobalScriptTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalScriptTask.java
+END
+GlobalConversation.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalConversation.java
+END
+GlobalChoreographyTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/callable/GlobalChoreographyTask.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server
+END
+BPMN2_0Importer.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/BPMN2_0Importer.java
+END
+Bpmn2_0Servlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/Bpmn2_0Servlet.java
+END
+Bpmn2_0ToXpdlServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/org/oryxeditor/server/Bpmn2_0ToXpdlServlet.java
+END

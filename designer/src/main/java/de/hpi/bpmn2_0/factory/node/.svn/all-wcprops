@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node
+END
+ChoreographyActivityFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ChoreographyActivityFactory.java
+END
+EndEventFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/EndEventFactory.java
+END
+ConversationParticipantFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ConversationParticipantFactory.java
+END
+ConversationFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ConversationFactory.java
+END
+ProcessParticipantFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ProcessParticipantFactory.java
+END
+ParticipantFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ParticipantFactory.java
+END
+LaneFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/LaneFactory.java
+END
+IntermediateCatchEventFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/IntermediateCatchEventFactory.java
+END
+TextannotationFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/TextannotationFactory.java
+END
+ITSystemFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ITSystemFactory.java
+END
+MessageFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/MessageFactory.java
+END
+DataStoreFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/DataStoreFactory.java
+END
+SubprocessFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/SubprocessFactory.java
+END
+ChoreographyParticipantFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/ChoreographyParticipantFactory.java
+END
+GroupFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/GroupFactory.java
+END
+StartEventFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/StartEventFactory.java
+END
+IntermediateThrowEventFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/IntermediateThrowEventFactory.java
+END
+DataObjectFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/DataObjectFactory.java
+END
+GatewayFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/GatewayFactory.java
+END
+TaskFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/factory/node/TaskFactory.java
+END

@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model
+END
+Expression.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Expression.java
+END
+FormalExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/FormalExpression.java
+END
+BaseElementWithMixedContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/BaseElementWithMixedContent.java
+END
+AdHocOrdering.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/AdHocOrdering.java
+END
+CallableElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/CallableElement.java
+END
+Documentation.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Documentation.java
+END
+jaxb.index
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/jaxb.index
+END
+CategoryValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/CategoryValue.java
+END
+Definitions.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Definitions.java
+END
+Category.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Category.java
+END
+FlowNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/FlowNode.java
+END
+Process.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Process.java
+END
+FlowElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/FlowElement.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/package-info.java
+END
+BaseElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/BaseElement.java
+END
+Collaboration.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/Collaboration.java
+END
+RootElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/RootElement.java
+END

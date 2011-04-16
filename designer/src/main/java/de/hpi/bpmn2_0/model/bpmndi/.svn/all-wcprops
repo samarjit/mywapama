@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi
+END
+BPMNEdge.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNEdge.java
+END
+BPMNDiagram.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNDiagram.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/package-info.java
+END
+BPMNPlane.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNPlane.java
+END
+BPMNLabel.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNLabel.java
+END
+BPMNShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNShape.java
+END
+BPMNLabelStyle.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/BPMNLabelStyle.java
+END

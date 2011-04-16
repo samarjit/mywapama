@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/package-info.java
+END
+SubChoreography.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/SubChoreography.java
+END
+CallChoreography.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/CallChoreography.java
+END
+ChoreographyLoopType.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/ChoreographyLoopType.java
+END
+ChoreographyActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/ChoreographyActivity.java
+END
+Choreography.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/Choreography.java
+END
+ParticipantAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/ParticipantAssociation.java
+END
+ChoreographyTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/choreography/ChoreographyTask.java
+END

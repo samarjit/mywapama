@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/dc
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/dc/package-info.java
+END
+Font.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/dc/Font.java
+END
+Point.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/dc/Point.java
+END
+Bounds.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/bpmndi/dc/Bounds.java
+END

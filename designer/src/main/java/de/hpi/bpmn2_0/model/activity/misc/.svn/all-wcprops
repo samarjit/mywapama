@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc
+END
+Operation.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/Operation.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/package-info.java
+END
+ServiceImplementation.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/ServiceImplementation.java
+END
+UserTaskImplementation.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/UserTaskImplementation.java
+END
+CategoryValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/CategoryValue.java
+END
+BusinessRuleTaskImplementation.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/misc/BusinessRuleTaskImplementation.java
+END

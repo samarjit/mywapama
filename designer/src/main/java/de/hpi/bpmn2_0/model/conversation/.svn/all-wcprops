@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation
+END
+ConversationNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/ConversationNode.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/package-info.java
+END
+SubConversation.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/SubConversation.java
+END
+ConversationElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/ConversationElement.java
+END
+GlobalCommunication.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/GlobalCommunication.java
+END
+CallConversation.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/CallConversation.java
+END
+ConversationLink.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/ConversationLink.java
+END
+CorrelationKey.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/CorrelationKey.java
+END
+Conversation.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/conversation/Conversation.java
+END

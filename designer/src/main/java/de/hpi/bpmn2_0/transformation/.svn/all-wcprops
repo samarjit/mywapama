@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation
+END
+Diagram2XmlConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/Diagram2XmlConverter.java
+END
+BPMNPrefixMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/BPMNPrefixMapper.java
+END
+Visitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/Visitor.java
+END
+Json2XmlConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/Json2XmlConverter.java
+END
+BPMN2DiagramConverterI.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/BPMN2DiagramConverterI.java
+END
+Bpmn2XmlConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/Bpmn2XmlConverter.java
+END
+BPMN2DiagramConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/BPMN2DiagramConverter.java
+END
+Diagram2BpmnConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/transformation/Diagram2BpmnConverter.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop
+END
+ComplexBehaviorDefinition.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/ComplexBehaviorDefinition.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/package-info.java
+END
+LoopCharacteristics.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/LoopCharacteristics.java
+END
+MultiInstanceLoopCharacteristics.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/MultiInstanceLoopCharacteristics.java
+END
+StandardLoopCharacteristics.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/StandardLoopCharacteristics.java
+END
+MultiInstanceFlowCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/activity/loop/MultiInstanceFlowCondition.java
+END

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector
+END
+SequenceFlow.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/SequenceFlow.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/package-info.java
+END
+Edge.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/Edge.java
+END
+DataAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/DataAssociation.java
+END
+DataInputAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/DataInputAssociation.java
+END
+DataOutputAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/DataOutputAssociation.java
+END
+MessageFlowAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/MessageFlowAssociation.java
+END
+MessageFlow.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/MessageFlow.java
+END
+Association.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/Association.java
+END
+AssociationDirection.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/connector/AssociationDirection.java
+END

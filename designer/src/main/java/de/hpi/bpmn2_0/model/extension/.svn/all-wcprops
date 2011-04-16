@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension
+END
+PropertyListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/PropertyListItem.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/package-info.java
+END
+CustomExtensionSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/CustomExtensionSpecification.java
+END
+ExtensionElements.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/ExtensionElements.java
+END
+AbstractExtensionElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/AbstractExtensionElement.java
+END
+DummyItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/DummyItem.java
+END
+Extension.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/model/extension/Extension.java
+END

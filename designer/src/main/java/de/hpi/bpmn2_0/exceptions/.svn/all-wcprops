@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/exceptions
+END
+BpmnConverterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/exceptions/BpmnConverterException.java
+END
+BpmnMigrationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/exceptions/BpmnMigrationException.java
+END
+MigrationHelperException.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/125/trunk/designer_wapama/src/main/java/de/hpi/bpmn2_0/exceptions/MigrationHelperException.java
+END
