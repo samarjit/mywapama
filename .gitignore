@@ -7,5 +7,6 @@ target
 designer/src/main/webapp/repository
 .settings
 .externalToolBuilders
+.classpath
 designer/src/main/webapp/jsc/*.js
 _site
