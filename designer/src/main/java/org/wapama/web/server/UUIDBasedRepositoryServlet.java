@@ -245,7 +245,7 @@ public class UUIDBasedRepositoryServlet extends HttpServlet {
         if (resp.isCommitted()) {
         	return;//called twice... need to clean-up the FilterChainImpl that is quite wrong.
         }
-        
+        _logger.info("Saving.....");
         BufferedReader reader = req.getReader();
         StringWriter reqWriter = new StringWriter();
         char[] buffer = new char[4096];

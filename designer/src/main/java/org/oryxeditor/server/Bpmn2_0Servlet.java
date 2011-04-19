@@ -42,6 +42,8 @@ import javax.xml.validation.SchemaFactory;
 import org.json.JSONObject;
 import org.oryxeditor.server.diagram.Diagram;
 import org.oryxeditor.server.diagram.DiagramBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 
@@ -59,7 +61,7 @@ import de.hpi.util.reflection.ClassFinder;
  * 
  */
 public class Bpmn2_0Servlet extends HttpServlet {
-
+	Logger _logger = LoggerFactory.getLogger(Bpmn2_0Servlet.class); 
     private static final long serialVersionUID = -4308758083419724953L;
 
     /**
@@ -141,7 +143,7 @@ public class Bpmn2_0Servlet extends HttpServlet {
         }
 
         result.put("xml", writer.toString());
-System.out.println(writer.toString());
+ _logger.info(writer.toString());
         /* Append XML Schema validation results */
         if (vec.hasEvents()) {
             ValidationEvent[] events = vec.getEvents();
