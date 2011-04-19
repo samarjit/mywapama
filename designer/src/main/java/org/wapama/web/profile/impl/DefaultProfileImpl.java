@@ -21,10 +21,12 @@
 ****************************************/
 package org.wapama.web.profile.impl;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -36,21 +38,29 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import org.codehaus.jackson.JsonParseException;
+import org.eclipse.bpmn2.Bpmn2Package;
 import org.eclipse.bpmn2.Definitions;
+import org.eclipse.bpmn2.DocumentRoot;
+import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wapama.bpmn2.impl.Bpmn2JsonMarshaller;
 import org.wapama.bpmn2.impl.Bpmn2JsonUnmarshaller;
 import org.wapama.web.plugin.IDiagramPlugin;
 import org.wapama.web.plugin.impl.PluginServiceImpl;
 import org.wapama.web.profile.IDiagramProfile;
 
 
+
+
+
 /**
  * The implementation of the default profile for Process Designer.
- * 
- * TODO this could be refactored as an abstract class as the drools profile
- * reuses most of it.
  * @author Antoine Toulme
  */
 public class DefaultProfileImpl implements IDiagramProfile {
@@ -62,6 +72,11 @@ public class DefaultProfileImpl implements IDiagramProfile {
 
 
     private String _stencilSet;
+    private String _externalLoadHost;
+    private String _externalLoadProtocol;
+    private String _externalLoadSubdomain;
+    private String _usr;
+    private String _pwd;
     
     public DefaultProfileImpl(ServletContext servletContext) {
         this(servletContext, true);
@@ -95,7 +110,8 @@ public class DefaultProfileImpl implements IDiagramProfile {
         FileInputStream fileStream = null;
         try {
             try {
-                fileStream = new FileInputStream(context.getRealPath("/") + "/profiles/default.xml");
+                fileStream = new FileInputStream(new StringBuilder(context.getRealPath("/")).append("/").
+                        append("/").append("profiles").append("/").append("default.xml").toString());
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -136,6 +152,26 @@ public class DefaultProfileImpl implements IDiagramProfile {
         return "bpmn";
     }
     
+    public String getExternalLoadURLProtocol() {
+        return _externalLoadProtocol;
+    }
+
+    public String getExternalLoadURLHostname() {
+        return _externalLoadHost;
+    }
+
+    public String getExternalLoadURLSubdomain() {
+        return _externalLoadSubdomain;
+    }
+    
+    public String getUsr() {
+        return _usr;
+    }
+
+    public String getPwd() {
+        return _pwd;
+    }
+
     public IDiagramMarshaller createMarshaller() {
         return new IDiagramMarshaller() {
             public String parseModel(String jsonModel) {
@@ -156,4 +192,49 @@ public class DefaultProfileImpl implements IDiagramProfile {
             }
         };
     }
+    
+    public IDiagramUnmarshaller createUnmarshaller() {
+        return new IDiagramUnmarshaller() {
+            public String parseModel(String xmlModel, IDiagramProfile profile) {
+                Bpmn2JsonMarshaller marshaller = new Bpmn2JsonMarshaller();
+                marshaller.setProfile(profile);
+                try {
+                    return marshaller.marshall(getDefinitions(xmlModel));
+                } catch (Exception e) {
+                    _logger.error(e.getMessage(), e);
+                }
+                return "";
+            }
+        };
+    }
+    
+    private Definitions getDefinitions(String xml) {
+        try {
+            ResourceSet resourceSet = new ResourceSetImpl();
+            resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+                .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new Bpmn2ResourceFactoryImpl());
+            resourceSet.getPackageRegistry().put("http://www.omg.org/spec/BPMN/20100524/MODEL", Bpmn2Package.eINSTANCE);
+            Resource resource = resourceSet.createResource(URI.createURI("inputStream://dummyUriWithValidSuffix.xml"));
+            InputStream is = new ByteArrayInputStream(xml.getBytes("UTF-8"));
+            resource.load(is, Collections.EMPTY_MAP);
+            resource.load(Collections.EMPTY_MAP);
+            return ((DocumentRoot) resource.getContents().get(0)).getDefinitions();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String getStencilSetURL() {
+        return "/designer/stencilsets/bpmn2.0/bpmn2.0.json";
+    }
+
+    public String getStencilSetNamespaceURL() {
+        return "http://b3mn.org/stencilset/bpmn2.0#";
+    }
+
+    public String getStencilSetExtensionURL() {
+        return "http://oryx-editor.org/stencilsets/extensions/bpmncosts-2.0#";
+    }
+
 }

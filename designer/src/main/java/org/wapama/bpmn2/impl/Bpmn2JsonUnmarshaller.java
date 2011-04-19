@@ -24,9 +24,11 @@ package org.wapama.bpmn2.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -41,45 +43,90 @@ import org.eclipse.bpmn2.Association;
 import org.eclipse.bpmn2.Auditing;
 import org.eclipse.bpmn2.BaseElement;
 import org.eclipse.bpmn2.Bpmn2Factory;
+import org.eclipse.bpmn2.Bpmn2Package;
 import org.eclipse.bpmn2.BusinessRuleTask;
 import org.eclipse.bpmn2.DataObject;
 import org.eclipse.bpmn2.DataStore;
 import org.eclipse.bpmn2.Definitions;
+import org.eclipse.bpmn2.DocumentRoot;
 import org.eclipse.bpmn2.Documentation;
+import org.eclipse.bpmn2.EndEvent;
 import org.eclipse.bpmn2.Event;
-import org.eclipse.bpmn2.Expression;
+import org.eclipse.bpmn2.Extension;
+import org.eclipse.bpmn2.ExtensionAttributeDefinition;
+import org.eclipse.bpmn2.ExtensionAttributeValue;
+import org.eclipse.bpmn2.ExtensionDefinition;
+import org.eclipse.bpmn2.FlowElement;
 import org.eclipse.bpmn2.FlowElementsContainer;
 import org.eclipse.bpmn2.FlowNode;
+import org.eclipse.bpmn2.FormalExpression;
 import org.eclipse.bpmn2.Gateway;
+import org.eclipse.bpmn2.GatewayDirection;
 import org.eclipse.bpmn2.GlobalScriptTask;
 import org.eclipse.bpmn2.GlobalTask;
+import org.eclipse.bpmn2.GlobalUserTask;
 import org.eclipse.bpmn2.Import;
 import org.eclipse.bpmn2.ItemDefinition;
 import org.eclipse.bpmn2.Lane;
 import org.eclipse.bpmn2.ManualTask;
 import org.eclipse.bpmn2.Message;
 import org.eclipse.bpmn2.Monitoring;
+import org.eclipse.bpmn2.PotentialOwner;
 import org.eclipse.bpmn2.Process;
 import org.eclipse.bpmn2.ProcessType;
+import org.eclipse.bpmn2.Property;
+import org.eclipse.bpmn2.ResourceAssignmentExpression;
 import org.eclipse.bpmn2.RootElement;
 import org.eclipse.bpmn2.ScriptTask;
 import org.eclipse.bpmn2.SequenceFlow;
 import org.eclipse.bpmn2.ServiceTask;
+import org.eclipse.bpmn2.StartEvent;
 import org.eclipse.bpmn2.Task;
 import org.eclipse.bpmn2.TextAnnotation;
 import org.eclipse.bpmn2.UserTask;
+import org.eclipse.bpmn2.di.BPMNDiagram;
+import org.eclipse.bpmn2.di.BPMNEdge;
+import org.eclipse.bpmn2.di.BPMNPlane;
+import org.eclipse.bpmn2.di.BPMNShape;
+import org.eclipse.bpmn2.di.BpmnDiFactory;
+import org.eclipse.bpmn2.di.BpmnDiPackage;
+import org.eclipse.bpmn2.impl.DocumentRootImpl;
 import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl;
+import org.eclipse.dd.dc.Bounds;
+import org.eclipse.dd.dc.DcFactory;
+import org.eclipse.dd.dc.Point;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EAttributeImpl;
+import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleReference;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.wapama.bpmn2.BpmnMarshallerHelper;
 
+import org.wapama.bpmn2.BpmnMarshallerHelper;
+//import com.sun.tools.javac.parser.Parser.Factory;
+import com.sun.xml.internal.bind.AnyTypeAdapter;
 
 /**
  * @author Antoine Toulme
@@ -100,6 +147,8 @@ public class Bpmn2JsonUnmarshaller {
     // of our graph from json, as we miss elements before.
     private Map<Object, List<String>> _outgoingFlows = new HashMap<Object, List<String>>();
     private Set<String> _sequenceFlowTargets = new HashSet<String>();
+    private Map<String, Bounds> _bounds = new HashMap<String, Bounds>();
+    private Map<String, List<Point>> _dockers = new HashMap<String, List<Point>>();
 
     private List<BpmnMarshallerHelper> _helpers;
 
@@ -151,9 +200,47 @@ public class Bpmn2JsonUnmarshaller {
             // do the unmarshalling now:
             Definitions def = (Definitions) unmarshallItem(parser);
             reconnectFlows();
+            createDiagram(def);
+            revisitGateways(def);
             return def;
         } finally {
             parser.close();
+            _objMap.clear();
+            _idMap.clear();
+            _outgoingFlows.clear();
+            _sequenceFlowTargets.clear();
+            _bounds.clear();
+            _currentResource = null;
+        }
+    }
+    
+    /**
+     * Updates the gatewayDirection attributes of all gateways.
+     * @param def
+     */
+    private void revisitGateways(Definitions def) {
+        List<RootElement> rootElements =  def.getRootElements();
+        for(RootElement root : rootElements) {
+            if(root instanceof Process) {
+                Process process = (Process) root;
+                List<FlowElement> flowElements =  process.getFlowElements();
+                for(FlowElement fe : flowElements) {
+                    if(fe instanceof Gateway) {
+                        Gateway gateway = (Gateway) fe;
+                        int incoming = gateway.getIncoming() == null ? 0 : gateway.getIncoming().size();
+                        int outgoing = gateway.getOutgoing() == null ? 0 : gateway.getOutgoing().size();
+                        if (incoming <= 1 && outgoing > 1) {
+                            gateway.setGatewayDirection(GatewayDirection.DIVERGING);
+                        } else if (incoming > 1 && outgoing <= 1) {
+                            gateway.setGatewayDirection(GatewayDirection.CONVERGING);
+                        } else if (incoming > 1 && outgoing > 1) {
+                            gateway.setGatewayDirection(GatewayDirection.MIXED);
+                        } else {
+                            gateway.setGatewayDirection(GatewayDirection.UNSPECIFIED);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -182,14 +269,60 @@ public class Bpmn2JsonUnmarshaller {
             }
         }
     }
+    
+    private void createDiagram(Definitions def) {
+    	for (RootElement rootElement: def.getRootElements()) {
+    		if (rootElement instanceof Process) {
+    			Process process = (Process) rootElement;
+        		BpmnDiFactory factory = BpmnDiFactory.eINSTANCE;
+        		BPMNDiagram diagram = factory.createBPMNDiagram();
+        		BPMNPlane plane = factory.createBPMNPlane();
+        		plane.setBpmnElement(process);
+        		diagram.setPlane(plane);
+    			// first process flowNodes
+        		for (FlowElement flowElement: process.getFlowElements()) {
+        			if (flowElement instanceof FlowNode) {
+        				Bounds b = _bounds.get(flowElement.getId());
+        				if (b != null) {
+        					BPMNShape shape = factory.createBPMNShape();
+        					shape.setBpmnElement(flowElement);
+        					shape.setBounds(b);
+        					plane.getPlaneElement().add(shape);
+        				}
+        			} else if (flowElement instanceof SequenceFlow) {
+        				SequenceFlow sequenceFlow = (SequenceFlow) flowElement;
+        				BPMNEdge edge = factory.createBPMNEdge();
+    					edge.setBpmnElement(flowElement);
+    					DcFactory dcFactory = DcFactory.eINSTANCE;
+    					Point point = dcFactory.createPoint();
+    					Bounds sourceBounds = _bounds.get(sequenceFlow.getSourceRef().getId());
+    					point.setX(sourceBounds.getX() + (sourceBounds.getWidth()/2));
+    					point.setY(sourceBounds.getY() + (sourceBounds.getHeight()/2));
+    					edge.getWaypoint().add(point);
+    					List<Point> dockers = _dockers.get(sequenceFlow.getId());
+    					for (int i = 1; i < dockers.size() - 1; i++) {
+    						edge.getWaypoint().add(dockers.get(i));
+    					}
+    					point = dcFactory.createPoint();
+    					Bounds targetBounds = _bounds.get(sequenceFlow.getTargetRef().getId());
+    					point.setX(targetBounds.getX() + (targetBounds.getWidth()/2));
+    					point.setY(targetBounds.getY() + (targetBounds.getHeight()/2));
+    					edge.getWaypoint().add(point);
+    					plane.getPlaneElement().add(edge);
+        			}
+        		}
+        		def.getDiagrams().add(diagram);
+    		}
+    	}
+    }
 
     private BaseElement unmarshallItem(JsonParser parser) throws JsonParseException, IOException {
-
         String resourceId = null;
         Map<String, String> properties = null;
         String stencil = null;
         List<BaseElement> childElements = new ArrayList<BaseElement>();
         List<String> outgoing = new ArrayList<String>();
+        Map<String, Float> bounds = new HashMap<String, Float>();
         while (parser.nextToken() != JsonToken.END_OBJECT) {
             String fieldname = parser.getCurrentName();
             parser.nextToken();
@@ -211,11 +344,53 @@ public class Bpmn2JsonUnmarshaller {
                     childElements.add(unmarshallItem(parser));
                 }
             } else if ("bounds".equals(fieldname)) {
-                // pass on this
-                parser.skipChildren();
+                // bounds: {"lowerRight":{"x":484.0,"y":198.0},"upperLeft":{"x":454.0,"y":168.0}}
+                parser.nextToken();
+                parser.nextToken();
+                parser.nextToken();
+                parser.nextToken();
+                Integer x2 = parser.getIntValue();
+                parser.nextToken();
+                parser.nextToken();
+                Integer y2 = parser.getIntValue();
+                parser.nextToken();
+                parser.nextToken();
+                parser.nextToken();
+                parser.nextToken();
+                parser.nextToken();
+                Integer x1 = parser.getIntValue();
+                parser.nextToken();
+                parser.nextToken();
+                Integer y1 = parser.getIntValue();
+                parser.nextToken();
+                parser.nextToken();
+                Bounds b = DcFactory.eINSTANCE.createBounds();
+                b.setX(x1);
+                b.setY(y1);
+                b.setWidth(x2 - x1);
+                b.setHeight(y2 - y1);
+                this._bounds.put(resourceId, b);
             } else if ("dockers".equals(fieldname)) {
-                // pass on this
-                parser.skipChildren();
+                // "dockers":[{"x":50,"y":40},{"x":353.5,"y":115},{"x":353.5,"y":152},{"x":50,"y":40}],
+            	List<Point> dockers = new ArrayList<Point>();
+            	JsonToken nextToken = parser.nextToken();
+            	boolean end = JsonToken.END_ARRAY.equals(nextToken);
+            	while (!end) {
+            		nextToken = parser.nextToken();
+            		nextToken = parser.nextToken();
+            		Integer x = parser.getIntValue();
+                    parser.nextToken();
+                    parser.nextToken();
+                    Integer y = parser.getIntValue();
+                    Point point = DcFactory.eINSTANCE.createPoint();
+                    point.setX(x);
+                    point.setY(y);
+                    dockers.add(point);
+                    parser.nextToken();
+                    nextToken = parser.nextToken();
+                    end = JsonToken.END_ARRAY.equals(nextToken);
+            	}
+            	this._dockers.put(resourceId, dockers);
             } else if ("outgoing".equals(fieldname)) {
                 while (parser.nextToken() != JsonToken.END_ARRAY) {
                     // {resourceId: oryx_1AAA8C9A-39A5-42FC-8ED1-507A7F3728EA}
@@ -318,7 +493,23 @@ public class Bpmn2JsonUnmarshaller {
                             || child instanceof Artifact || child instanceof DataObject) {
                         if (rootLevelProcess == null) {
                             rootLevelProcess = Bpmn2Factory.eINSTANCE.createProcess();
+                            // set the properties and item definitions first
+                            if(properties.get("vardefs") != null && properties.get("vardefs").length() > 0) {
+                                //comma-separated!
+                                String[] vardefs = properties.get("vardefs").split( ",\\s*" );
+                                for(String vardef : vardefs) {
+                                    Property prop = Bpmn2Factory.eINSTANCE.createProperty();
+                                    prop.setId(vardef);
+                                    ItemDefinition itemdef =  Bpmn2Factory.eINSTANCE.createItemDefinition();
+                                    itemdef.setId("_" + prop.getId() + "Item");
+                                    prop.setItemSubjectRef(itemdef);
+                                    rootLevelProcess.getProperties().add(prop);
+                                    ((Definitions) baseElt).getRootElements().add(itemdef);
+                                }
+                            }
                             rootLevelProcess.setName(((Definitions) baseElt).getName());
+                            rootLevelProcess.setId(properties.get("id"));
+                            applyProcessProperties(rootLevelProcess, properties);
                             ((Definitions) baseElt).getRootElements().add(rootLevelProcess);
                         }
                     }
@@ -433,8 +624,14 @@ public class Bpmn2JsonUnmarshaller {
         if (baseElement instanceof SequenceFlow) {
             applySequenceFlowProperties((SequenceFlow) baseElement, properties);
         }
+        if (baseElement instanceof UserTask) {
+            applyUserTaskProperties((UserTask) baseElement, properties);
+        }    
         if (baseElement instanceof Task) {
             applyTaskProperties((Task) baseElement, properties);
+        }
+        if (baseElement instanceof BusinessRuleTask) {
+            applyBusinessRuleTaskProperties((BusinessRuleTask) baseElement, properties);
         }
         if (baseElement instanceof ScriptTask) {
             applyScriptTaskProperties((ScriptTask) baseElement, properties);
@@ -457,6 +654,13 @@ public class Bpmn2JsonUnmarshaller {
         if (baseElement instanceof Message) {
             applyMessageProperties((Message) baseElement, properties);
         }
+        if (baseElement instanceof StartEvent) {
+            applyStartEventProperties((StartEvent) baseElement, properties);
+        }
+        
+        if (baseElement instanceof EndEvent) {
+            applyEndEventProperties((EndEvent) baseElement, properties);
+        }
         
         // finally, apply properties from helpers:
         for (BpmnMarshallerHelper helper : _helpers) {
@@ -464,6 +668,15 @@ public class Bpmn2JsonUnmarshaller {
         }
     }
 
+    private void applyEndEventProperties(EndEvent ee, Map<String, String> properties) {
+        ee.setId(properties.get("resourceId"));
+        ee.setName(properties.get("name"));
+    }
+    
+    private void applyStartEventProperties(StartEvent se, Map<String, String> properties) {
+        se.setName(properties.get("name"));
+    }
+    
     private void applyMessageProperties(Message msg, Map<String, String> properties) {
         msg.setName(properties.get("name"));
     }
@@ -492,6 +705,7 @@ public class Bpmn2JsonUnmarshaller {
             monitoring.getDocumentation().add(createDocumentation(properties.get("monitoring")));
             event.setMonitoring(monitoring);
         }
+        
     }
 
     private void applyGlobalTaskProperties(GlobalTask globalTask, Map<String, String> properties) {
@@ -506,7 +720,9 @@ public class Bpmn2JsonUnmarshaller {
         if (properties.get("documentation") != null && !"".equals(properties.get("documentation"))) {
             baseElement.getDocumentation().add(createDocumentation(properties.get("documentation")));
         }
-        baseElement.setId(properties.get("resourceId"));
+        if(baseElement.getId() == null || baseElement.getId().length() < 1) {
+            baseElement.setId(properties.get("resourceId"));
+        }
     }
 
     private void applyDefinitionProperties(Definitions def, Map<String, String> properties) {
@@ -514,10 +730,19 @@ public class Bpmn2JsonUnmarshaller {
         def.setTargetNamespace(properties.get("targetnamespace"));
         def.setExpressionLanguage(properties.get("expressionlanguage"));
         def.setName(properties.get("name"));
+        
+        ExtendedMetaData metadata = ExtendedMetaData.INSTANCE;
+        EAttributeImpl extensionAttribute = (EAttributeImpl) metadata.demandFeature(
+                    "xsi", "schemaLocation", false, false);
+        EStructuralFeatureImpl.SimpleFeatureMapEntry extensionEntry = new EStructuralFeatureImpl.SimpleFeatureMapEntry(extensionAttribute,
+            "http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd");
+        def.getAnyAttribute().add(extensionEntry);
+        
         _currentResource.getContents().add(def);// hook the definitions object to the resource early.
     }
 
     private void applyProcessProperties(Process process, Map<String, String> properties) {
+        Iterator<String> iter = properties.keySet().iterator();
         process.setName(properties.get("name"));
         if (properties.get("auditing") != null && !"".equals(properties.get("auditing"))) {
             Auditing audit = Bpmn2Factory.eINSTANCE.createAuditing();
@@ -525,9 +750,48 @@ public class Bpmn2JsonUnmarshaller {
             process.setAuditing(audit);
         }
         process.setProcessType(ProcessType.getByName(properties.get("processtype")));
-        process.setIsClosed(Boolean.parseBoolean(properties.get("isclosed")));
+        process.setIsClosed(Boolean.parseBoolean(properties.get("isclosed")));  
+        process.setIsExecutable(Boolean.parseBoolean(properties.get("executable")));
+        // get the drools-specific extension packageName attribute to Process if defined
+        if(properties.get("package") != null && properties.get("package").length() > 0) {
+            ExtendedMetaData metadata = ExtendedMetaData.INSTANCE;
+            EAttributeImpl extensionAttribute = (EAttributeImpl) metadata.demandFeature(
+                        "http://www.jboss.org/drools", "packageName", false, false);
+            EStructuralFeatureImpl.SimpleFeatureMapEntry extensionEntry = new EStructuralFeatureImpl.SimpleFeatureMapEntry(extensionAttribute,
+                properties.get("package"));
+            process.getAnyAttribute().add(extensionEntry);
+        }
+        
+        // add version attrbute to process
+        if(properties.get("version") != null && properties.get("version").length() > 0) {
+            ExtendedMetaData metadata = ExtendedMetaData.INSTANCE;
+            EAttributeImpl extensionAttribute = (EAttributeImpl) metadata.demandFeature(
+                        "http://www.jboss.org/drools", "version", false, false);
+            EStructuralFeatureImpl.SimpleFeatureMapEntry extensionEntry = new EStructuralFeatureImpl.SimpleFeatureMapEntry(extensionAttribute,
+                properties.get("version"));
+            process.getAnyAttribute().add(extensionEntry);
+        }
+        
+        if (properties.get("monitoring") != null && !"".equals(properties.get("monitoring"))) {
+            Monitoring monitoring = Bpmn2Factory.eINSTANCE.createMonitoring();
+            monitoring.getDocumentation().add(createDocumentation(properties.get("monitoring")));
+            process.setMonitoring(monitoring);
+        }
     }
 
+    private void applyBusinessRuleTaskProperties(BusinessRuleTask task, Map<String, String> properties) {
+        task.setName(properties.get("name"));
+        if(properties.get("ruleflowgroup") != null &&  properties.get("ruleflowgroup").length() > 0) {
+            // add droolsjbpm-specific attribute "ruleFlowGroup"
+            ExtendedMetaData metadata = ExtendedMetaData.INSTANCE;
+            EAttributeImpl extensionAttribute = (EAttributeImpl) metadata.demandFeature(
+                    "http://www.jboss.org/drools", "ruleFlowGroup", false, false);
+            EStructuralFeatureImpl.SimpleFeatureMapEntry extensionEntry = new EStructuralFeatureImpl.SimpleFeatureMapEntry(extensionAttribute,
+                    properties.get("ruleflowgroup"));
+            task.getAnyAttribute().add(extensionEntry);
+        }
+    }
+    
     private void applyScriptTaskProperties(ScriptTask scriptTask, Map<String, String> properties) {
         scriptTask.setName(properties.get("name"));
         scriptTask.setScript(properties.get("script"));
@@ -540,6 +804,31 @@ public class Bpmn2JsonUnmarshaller {
 
     private void applyTaskProperties(Task task, Map<String, String> properties) {
         task.setName(properties.get("name"));
+        if(properties.get("taskname") != null && properties.get("taskname").length() > 0) {
+            // add droolsjbpm-specific attribute "taskName"
+            ExtendedMetaData metadata = ExtendedMetaData.INSTANCE;
+            EAttributeImpl extensionAttribute = (EAttributeImpl) metadata.demandFeature(
+                    "http://www.jboss.org/drools", "taskName", false, false);
+            EStructuralFeatureImpl.SimpleFeatureMapEntry extensionEntry = new EStructuralFeatureImpl.SimpleFeatureMapEntry(extensionAttribute,
+                    properties.get("taskname"));
+            task.getAnyAttribute().add(extensionEntry);
+        }
+    }
+    
+    private void applyUserTaskProperties(UserTask task, Map<String, String> properties) {
+        applyTaskProperties(task, properties);
+        if(properties.get("actors") != null && properties.get("actors").length() > 0) {
+            String[] allActors = properties.get("actors").split( ",\\s*" );
+            for(String actor : allActors) {
+                PotentialOwner po = Bpmn2Factory.eINSTANCE.createPotentialOwner();
+                ResourceAssignmentExpression rae = Bpmn2Factory.eINSTANCE.createResourceAssignmentExpression();
+                FormalExpression fe = Bpmn2Factory.eINSTANCE.createFormalExpression();
+                fe.setBody(actor);
+                rae.setExpression(fe);
+                po.setResourceAssignmentExpression(rae);
+                task.getResources().add(po);
+            }
+        }
     }
     
     private void applyGatewayProperties(Gateway gateway, Map<String, String> properties) {
@@ -554,8 +843,8 @@ public class Bpmn2JsonUnmarshaller {
             sequenceFlow.setAuditing(audit);
         }
         if (properties.get("conditionexpression") != null && !"".equals(properties.get("conditionexpression"))) {
-            Expression expr = Bpmn2Factory.eINSTANCE.createExpression();
-            expr.getDocumentation().add(createDocumentation(properties.get("conditionexpression")));
+            FormalExpression expr = Bpmn2Factory.eINSTANCE.createFormalExpression();
+            expr.setBody(properties.get("conditionexpression"));
             sequenceFlow.setConditionExpression(expr);
         }
         if (properties.get("monitoring") != null && !"".equals(properties.get("monitoring"))) {

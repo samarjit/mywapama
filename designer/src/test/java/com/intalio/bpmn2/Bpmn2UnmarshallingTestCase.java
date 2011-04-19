@@ -24,8 +24,8 @@ package com.intalio.bpmn2;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Collections;
 
@@ -66,6 +66,7 @@ import org.eclipse.bpmn2.TextAnnotation;
 import org.eclipse.bpmn2.ThrowEvent;
 import org.eclipse.bpmn2.TimerEventDefinition;
 import org.junit.Test;
+import org.wapama.bpmn2.impl.Bpmn2JsonMarshaller;
 import org.wapama.bpmn2.impl.Bpmn2JsonUnmarshaller;
 
 
@@ -165,6 +166,11 @@ public class Bpmn2UnmarshallingTestCase {
         assertEquals(task, flow.getSourceRef());
         assertEquals(task2, flow.getTargetRef());
         definitions.eResource().save(System.out, Collections.emptyMap());
+        ByteArrayOutputStream str = new ByteArrayOutputStream();
+        definitions.eResource().save(str, Collections.emptyMap());
+        /*Bpmn2JsonMarshaller mar = new Bpmn2JsonMarshaller();
+        String res = mar.marshall(definitions);
+        System.out.println("marshallinggggg"+res);*/
     }
     
     @Test
