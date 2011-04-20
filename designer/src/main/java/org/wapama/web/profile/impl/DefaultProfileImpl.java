@@ -225,6 +225,7 @@ public class DefaultProfileImpl implements IDiagramProfile {
         }
     }
     
+    //TODO change /designer to context path
     public String getStencilSetURL() {
         return "/designer/stencilsets/bpmn2.0/bpmn2.0.json";
     }

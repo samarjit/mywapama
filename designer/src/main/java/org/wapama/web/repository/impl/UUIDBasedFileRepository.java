@@ -29,6 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,10 +62,15 @@ public class UUIDBasedFileRepository implements IUUIDBasedRepository {
         _repositoryPath = servlet.getServletContext().getRealPath("/" + REPOSITORY_PATH);
     }
     
-    public byte[] load(HttpServletRequest req, String uuid, String extension) {
-        
+    public byte[] load(HttpServletRequest req, String uuid, IDiagramProfile profile) {
+        System.out.println("File loading starts....");
+    	String bpmnfile = _repositoryPath + "/" + uuid + ".bpmn";//profile.getSerializedModelExtension();
         String filename = _repositoryPath + "/" + uuid + ".json";
-        if (!new File(filename).exists()) {
+        String myextn = "JSON";
+        if (new File(bpmnfile).exists()) {System.out.println("loading bpmn:"+profile.getSerializedModelExtension());
+        	myextn = "BPMN";
+        	filename = bpmnfile;
+        }else if (!new File(filename).exists()) {
            return new byte[0]; // then return nothing. 
         }
         InputStream input = null;
@@ -76,6 +82,21 @@ public class UUIDBasedFileRepository implements IUUIDBasedRepository {
            
             while ((read = input.read(buffer)) != -1) {
                 output.write(buffer, 0, read);
+            }
+            
+            
+            
+			String processxml = new String(buffer, Charset.forName("UTF-8"));
+			processxml = processxml.trim();
+			String processjson = "";
+			//convert 
+            if(processxml != null && processxml.length() > 0 && myextn.equals("BPMN")) {
+            	System.out.println("processxml="+processxml);
+                processjson = profile.createUnmarshaller().parseModel(processxml, profile);
+                System.out.println("result json="+processjson.getBytes("UTF-8"));
+                return processjson.getBytes("UTF-8");
+            } else {
+            	//do nothing if its already json
             }
         } catch (FileNotFoundException e) {
             //unlikely since we just checked.
@@ -118,5 +139,9 @@ public class UUIDBasedFileRepository implements IUUIDBasedRepository {
         } finally {
             if (writer != null) { try { writer.close();} catch(Exception e) {} }
         }
+    }
+    
+    public String toXML(String json, IDiagramProfile profile) {
+        return profile.createMarshaller().parseModel(json);
     }
 }

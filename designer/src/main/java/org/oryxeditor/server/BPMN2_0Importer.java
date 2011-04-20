@@ -40,6 +40,11 @@ import javax.xml.bind.Unmarshaller;
 import org.json.JSONException;
 import org.oryxeditor.server.diagram.Diagram;
 import org.oryxeditor.server.diagram.JSONBuilder;
+import org.wapama.web.profile.IDiagramProfile;
+import org.wapama.web.profile.IDiagramProfileService;
+import org.wapama.web.profile.impl.ProfileServiceImpl;
+
+ 
 
 import de.hpi.bpmn2_0.model.Definitions;
 import de.hpi.bpmn2_0.transformation.BPMN2DiagramConverter;
@@ -63,7 +68,7 @@ public class BPMN2_0Importer extends HttpServlet {
 
 		/* Transform and return from DI */
 		try {
-			StringWriter output = this.getJsonFromBpmn20Xml(bpmn20Xml);
+			StringWriter output = this.getJsonFromBpmn20Xml(req, bpmn20Xml);
 			res.setContentType("application/json");
 			res.setStatus(200);
 			res.getWriter().print(output.toString());
@@ -80,7 +85,8 @@ public class BPMN2_0Importer extends HttpServlet {
 
 	}
 
-	private StringWriter getJsonFromBpmn20Xml(String bpmn20Xml) throws JAXBException, JSONException {
+	@Deprecated
+	private StringWriter getJsonFromBpmn20Xml_old(String bpmn20Xml) throws JAXBException, JSONException {
 		StringWriter writer = new StringWriter();
 		PrintWriter out = new PrintWriter(writer);
 		
@@ -97,5 +103,38 @@ public class BPMN2_0Importer extends HttpServlet {
 
 		return writer;
 	}
-
+	private StringWriter getJsonFromBpmn20Xml(HttpServletRequest req, String bpmn20Xml) throws JAXBException, JSONException {
+		StringWriter writer = new StringWriter();
+		PrintWriter out = new PrintWriter(writer);
+		
+		StringReader reader = new StringReader(bpmn20Xml);
+		String profileName = "default";
+		if(req.getParameter("profile") != null && req.getParameter("profile").isEmpty()){
+			profileName  = req.getParameter("profile");
+		}
+		IDiagramProfile profile = getProfile(null, profileName);
+		
+		if(bpmn20Xml != null && bpmn20Xml.length() > 0) {
+            String processjson = profile.createUnmarshaller().parseModel(bpmn20Xml, profile);
+            System.out.println("Loaded json="+processjson);
+             out.print( processjson);
+        } else {
+        	//do nothing if its already json
+        }
+ 
+		return writer;
+	}
+	
+	 private IDiagramProfile getProfile(HttpServletRequest req, String profileName) {
+	        IDiagramProfile profile = null;
+	        
+	        IDiagramProfileService service = new ProfileServiceImpl();
+	        service.init(getServletContext());
+	        profile = service.findProfile(req, profileName);
+	        if(profile == null) {
+	            throw new IllegalArgumentException("Cannot determine the profile to use for interpreting models");
+	        }
+	        return profile;
+	 }
+	 
 }

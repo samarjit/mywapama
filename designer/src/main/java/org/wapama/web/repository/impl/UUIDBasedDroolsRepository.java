@@ -66,7 +66,7 @@ public class UUIDBasedDroolsRepository implements IUUIDBasedRepository {
      * @param ext the file extension to apply to the model.
      * @return the model as a set of bytes.
      */
-    public byte[] load(HttpServletRequest req, String uuid, String ext) {
+    public byte[] load(HttpServletRequest req, String uuid, IDiagramProfile profile) {
         return new byte[0];
     }
 
@@ -83,6 +83,10 @@ public class UUIDBasedDroolsRepository implements IUUIDBasedRepository {
             String svg, IDiagramProfile profile, Boolean autosave) 
             throws DiagramValidationException {
    
+    }
+    
+    public String toXML(String json, IDiagramProfile profile) {
+        return profile.createMarshaller().parseModel(json);
     }
     
 }

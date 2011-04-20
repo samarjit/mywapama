@@ -44,10 +44,10 @@ public interface IUUIDBasedRepository {
     /**
      * @param req the request from the user.
      * @param uuid the id of the model.
-     * @param ext the file extension to apply to the model.
+     * @param profile the file extension to apply to the model.
      * @return the model as a set of bytes.
      */
-    public byte[] load(HttpServletRequest req, String uuid, String ext);
+    public byte[] load(HttpServletRequest req, String uuid, IDiagramProfile profile);
     
     /**
      * Saves the model inside the repository.
@@ -59,5 +59,11 @@ public interface IUUIDBasedRepository {
      * @throws DiagramValidationException 
      */
     public void save(HttpServletRequest req, String uuid, String json, String svg, IDiagramProfile profile, Boolean autosave) throws DiagramValidationException;
-
+    
+    /**
+     * Transforms given json to bpmn2 xml
+     * @param json
+     * @return bpmn2 xml
+     */
+    public String toXML(String json, IDiagramProfile profile);
 }
